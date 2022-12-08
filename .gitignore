@@ -1,0 +1,9 @@
+#All the settings files in the .idea directory should be put under version control except the
+# workspace.xml, which stores your local preferences.
+
+# The workspace.xml file contains various user-specific settings, such as environment variables,
+# cursor position, and Python SDK location.
+
+#Environmental variables may include private data, such as usernames and passwords.
+#For more info: https://stackoverflow.com/questions/24516814/should-i-ignore-the-idea-folder-when-using-pycharm-with-git
+.idea/workspace.xml
