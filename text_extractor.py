@@ -23,46 +23,66 @@ def filter_words(word):
 
 
 def pdf_reader(path):
-    text = textract.process(path, method='pdftotext')
-    # Decode() is used to convert 'byte' string which we get from 'textextract' method to 'character' string.
-    text = text.decode().split()
-    all_words = []
-    for i in text:
-        # To filter out words which does not consists of letters i.e. replacing non-alphabetic char. with ' '.
-        temp = re.sub('[^a-zA-Z]', ' ', i)
-        # To remove any trailing or leading zeros in the word
-        temp = temp.strip()
-        # To make all words lowercase
-        temp = temp.lower()
-        all_words.append(temp)
+    try:
+        text = textract.process(path, method='pdftotext')
+        # Decode() is used to convert 'byte' string which we get from 'textextract' method to 'character' string.
+        text = text.decode().split()
+        all_words = []
+        for i in text:
+            # To filter out words which does not consists of letters i.e. replacing non-alphabetic char. with ' '.
+            temp = re.sub('[^a-zA-Z]', ' ', i)
+            # To remove any trailing or leading zeros in the word
+            temp = temp.strip()
+            # To make all words lowercase
+            temp = temp.lower()
+            all_words.append(temp)
 
-    # Filtering words in the list based on some conditions
-    filtered_words = list(filter(filter_words, all_words))
-    # print(filtered_words)
-    return filtered_words
+        # Filtering words in the list based on some conditions
+        filtered_words = list(filter(filter_words, all_words))
+        # print(filtered_words)
+        return filtered_words
+    except:
+        print('error parsing the files @', path)
+        return []      
+    
 # ///////////////////////////////////////////////////////////////////////////////////
 
 
 # For Docx
 def docx_reader(path):
-    text = textract.process(path).decode()
-    text = text.split()
+    try:
+        text = textract.process(path).decode()
+        text = text.split()
 
-    all_words = []
-    for i in text:
-        # Replacing every non-alphabetic character with a space
-        temp = re.sub('[^a-zA-Z]', ' ', i)
-        temp = temp.strip().lower()
-        all_words.append(temp)
-    filtered_words = list(filter(filter_words, all_words))
-    print(filtered_words)
+        all_words = []
+        for i in text:
+            # Replacing every non-alphabetic character with a space
+            temp = re.sub('[^a-zA-Z]', ' ', i)
+            temp = temp.strip().lower()
+            all_words.append(temp)
+        filtered_words = list(filter(filter_words, all_words))
+        return filtered_words
+    except:
+        print('error parsing the files @', path)
+        return []
+    
 # //////////////////////////////////////////////////////////////////////////////////
 
 
-# For Txt
-def text(path):
-    pass
+# For Text
+def text_reader(path):
+    try:
+        all_words = []
+        text = textract.process(path).decode().split()
+        for i in text:
+            temp = re.sub('[^a-zA-Z]', ' ', i)
+            temp = temp.lower().strip()
+            all_words.append(temp)
+        filtered_words = list(filter(filter_words, all_words))
+        # print(len(filtered_words))
+        return filtered_words
+    except:
+        print('error parsing the files @', path)
+        return []
 
 # /////////////////////////////////////////////////////////////////////////////////
-
-
