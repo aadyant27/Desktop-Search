@@ -33,7 +33,7 @@ We create Primary Key in our Table, just to avoid duplication of rows.
 def create_table(conn):
     c = conn.cursor()
     c.execute('''CREATE TABLE IF NOT EXISTS file_paths(
-    file_name text,
+    file_name text NOT NULL,
     file_path text,
     PRIMARY KEY(file_name, file_path)
     )''')
@@ -45,9 +45,10 @@ def create_table(conn):
     )''')
 
     c.execute('''CREATE TABLE IF NOT EXISTS file_time_stamps_table(
-    file_name text,
+    file_name text NOT NULL,
     file_path text,
-    time_stamp real
+    time_stamp real,
+    PRIMARY KEY(file_name, file_path)
     )''')
 
     create_index(conn)
@@ -90,6 +91,7 @@ def insert_into_file_time_stamps_table(conn, values):
         c.execute(sql, values)
         conn.commit()
     except Error as e:
+        # print(e)
         return
 
 
@@ -125,3 +127,11 @@ def query(conn):
         # print(i)
         count += 1
     print('Number of rows in word_paths table', count)
+
+    # PRINT time_stamp TABLE
+    count = 0
+    c.execute('''SELECT * FROM file_time_stamps_table''')
+    for i in c.fetchall():
+        # print(i)
+        count += 1
+    print('Number of rows in time_stamps table', count)
