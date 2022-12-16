@@ -7,3 +7,6 @@
 #Environmental variables may include private data, such as usernames and passwords.
 #For more info: https://stackoverflow.com/questions/24516814/should-i-ignore-the-idea-folder-when-using-pycharm-with-git
 .idea/workspace.xml
+.DS_Store
+test.db
+__pycache__

@@ -6,7 +6,7 @@ import os
 def create_db():
     # print(os.getcwd(), 'hi')
     # Setting the location where our DataBase 'test.db' would reside.
-    os.chdir('/Users/aadyantsrivastav/Desktop/Education/pythonProject/')
+    # os.chdir('/Users/aadyantsrivastav/Desktop/Desktop-Search')
     conn = sqlite3.connect('test.db')
     create_table(conn)
 
