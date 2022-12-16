@@ -95,6 +95,31 @@ def insert_into_file_time_stamps_table(conn, values):
         return
 
 
+def search_file_paths(conn, name):
+    c = conn.cursor()
+    print('file to be searched is:', name)
+    sql = "SELECT file_path FROM file_paths WHERE file_name LIKE ?"
+    name = '%'+name+'%'
+    c.execute(sql, (name,))
+    # for i in c.fetchall():
+    #     print(i[0])
+    return c.fetchall()
+    # print(c.fetchall())
+
+
+def search_word_paths(conn, word):
+    c = conn.cursor()
+    sql = "SELECT file_path FROM word_paths WHERE words = ?"
+    c.execute(sql, (word,))
+    return c.fetchall()
+
+
+def search_time_stamps(conn, path):
+    c = conn.cursor()
+    sql = "SELECT * FROM file_time_stamps_table WHERE file_path = ?"
+    c.execute(sql, (path,))
+    return c.fetchall()
+
 
 def query(conn):
     c = conn.cursor()
@@ -118,20 +143,4 @@ def query(conn):
     for i in c.fetchall():
         # print(i)
         count += 1
-    print('Number of rows in file_paths table', count)
-
-    # PRINT word_path TABLE
-    count = 0
-    c.execute('''SELECT * FROM word_paths''')
-    for i in c.fetchall():
-        # print(i)
-        count += 1
-    print('Number of rows in word_paths table', count)
-
-    # PRINT time_stamp TABLE
-    count = 0
-    c.execute('''SELECT * FROM file_time_stamps_table''')
-    for i in c.fetchall():
-        # print(i)
-        count += 1
-    print('Number of rows in time_stamps table', count)
+    print('Number of files parsed', count//2)
