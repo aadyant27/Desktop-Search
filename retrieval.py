@@ -48,8 +48,11 @@ if search_type == 1:
     # REDIRECTING(OPENING) THE FILE OF CHOICE
     # Choosing a file to open/redirect
     choice = int(input('Enter id associated with the file you want to select: '))
-    # Redirecting/opening the chosen file
-    redirect(files[choice])
+    if choice > 5:
+        print('Wrong Choice! Index does not exists.')
+    else:
+        # Redirecting/opening the chosen file
+        redirect(files[choice])
 
 
 elif search_type == 2:
@@ -81,6 +84,9 @@ elif search_type == 2:
     # REDIRECTING(OPENING) THE FILE
     choice = int(input('Enter id associated with the file you want to select: '))
     redirect(files[choice])
+
+else:
+    print('Incorrect Choice, Run the file again')
 
 # //////////////////////////////////////////////////////////////////
 

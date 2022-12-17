@@ -9,8 +9,9 @@ from text_extractor import pdf_reader, docx_reader, text_reader
 
 # INPUT FROM USER
 # dir_path = '/Users/aadyantsrivastav/Desktop/'
-dir_path = input('Enter Absolute-file-path for which you want to search the files\n[NOTE] : You can use pwd command \
-to get Absolute file path of current working directory!\n=> ')
+dir_path = input('Enter Absolute-file-path for which you want to search the files. Append slash at the end. \
+ \n[NOTE] : You can use pwd command to get Absolute file path of current working directory!\n=> ')
+
 
 print('Wait while files are being processed...\n')
 # CREATING DB
