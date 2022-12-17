@@ -81,7 +81,6 @@ def insert_into_word_paths_table(conn, values):
         c.execute(sql, values)
         conn.commit()
     except Error as e:
-        # print(e)
         return
 
 def insert_into_file_time_stamps_table(conn, values):
@@ -91,7 +90,6 @@ def insert_into_file_time_stamps_table(conn, values):
         c.execute(sql, values)
         conn.commit()
     except Error as e:
-        # print(e)
         return
 
 
@@ -141,6 +139,8 @@ def query(conn):
     count = 0
     c.execute('''SELECT * FROM file_paths''')
     for i in c.fetchall():
-        # print(i)
         count += 1
     print('Number of files parsed', count//2)
+
+
+# //////////////////////////////////////////////////////////

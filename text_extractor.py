@@ -1,4 +1,3 @@
-import os
 import textract
 import re
 import nltk
@@ -7,7 +6,6 @@ import nltk
 from nltk.corpus import stopwords
 nltk.download('stopwords')
 stopword = stopwords.words('english')
-# print(stopword)
 
 
 # This function filters words(string of word) if,

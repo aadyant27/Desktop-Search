@@ -7,7 +7,6 @@ conn = sqlite3.connect('test.db')
 """
 1. Input == 1 => file/ext search
 2. Input == 2 => word search
-    2.1 If Input == 2, Enter 1 to 3 words to commence search
 """
 
 
@@ -82,4 +81,6 @@ elif search_type == 2:
     # REDIRECTING(OPENING) THE FILE
     choice = int(input('Enter id associated with the file you want to select: '))
     redirect(files[choice])
+
+# //////////////////////////////////////////////////////////////////
 
